@@ -10,8 +10,9 @@ export default {
         primary: '#6366f1',
         secondary: '#8b5cf6',
         accent: '#a855f7',
-        dark: '#0a0a0f',
-        darker: '#050508',
+        dark: '#12102a',
+        darker: '#0a0618',
+        deep: '#0d1528',
         light: '#f1f5f9',
       },
       fontFamily: {

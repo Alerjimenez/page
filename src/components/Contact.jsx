@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Linkedin, Send, MessageCircle, MapPin } from 'lucide-react'
+import { Mail, Linkedin, Send, MessageCircle } from 'lucide-react'
+import ContactModal from './ContactModal'
 
 const Contact = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const contactItems = [
     {
       icon: Mail,
@@ -93,7 +97,7 @@ const Contact = () => {
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(99, 102, 241, 0.5)' }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => (window.location.href = 'mailto:alerjimenez@gmail.com')}
+              onClick={() => setIsModalOpen(true)}
               className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-xl font-semibold hover:from-primary/80 hover:to-secondary/80 transition-all duration-300 shadow-lg shadow-primary/30"
             >
               <Send size={20} />
@@ -102,6 +106,8 @@ const Contact = () => {
           </div>
         </motion.div>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }

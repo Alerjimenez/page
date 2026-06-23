@@ -11,8 +11,13 @@ const Experience = () => {
         { name: 'Cisco', level: 'Intermediate' },
         { name: 'Active Directory', level: 'Intermediate' },
         { name: 'Technical Support', level: 'Experienced' },
-        { name: 'Firewall', level: 'Basic' },
         { name: 'MS365', level: 'Intermediate' },
+        { name: 'Linux', level: 'Intermediate' },
+        { name: 'Firewall', level: 'Basic' },
+        { name: 'MacOS', level: 'Intermediate' },
+        { name: 'n8n', level: 'Intermediate' },
+        { name: 'Windows', level: 'Experienced' },
+        
       ],
     },
     {
@@ -23,6 +28,9 @@ const Experience = () => {
         { name: 'GCP', level: 'Basic' },
         { name: 'PC Hardware', level: 'Experienced' },
         { name: 'Meridian PBX', level: 'Intermediate' },
+        { name: 'Servers Administration (Ubuntu)', level: 'Basic' },
+        { name: 'Docker', level: 'Basic' },
+        { name: 'Networking', level: 'Intermediate' },
       ],
     },
     {
