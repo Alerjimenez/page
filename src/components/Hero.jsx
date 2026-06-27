@@ -3,8 +3,106 @@ import { Download, Mail, Linkedin, ArrowDown, Sparkles } from 'lucide-react'
 
 const Hero = () => {
   return (
-    <section id="profile" className="min-h-screen flex items-center justify-center pt-20 px-4 relative">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <section id="profile" className="min-h-screen flex items-center justify-center pt-20 px-4 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-darker">
+        {/* Gradient mesh */}
+        <motion.div
+          animate={{
+            backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: 'radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.4) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.4) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.3) 0%, transparent 50%)',
+            backgroundSize: '200% 200%',
+          }}
+        />
+
+        {/* Floating orbs */}
+        {Array.from({ length: 6 }).map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              x: [0, Math.random() * 100 - 50, 0],
+              y: [0, Math.random() * 100 - 50, 0],
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: Math.random() * 2,
+            }}
+            className="absolute rounded-full blur-3xl"
+            style={{
+              width: 200 + Math.random() * 200,
+              height: 200 + Math.random() * 200,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: i % 3 === 0 ? 'rgba(99, 102, 241, 0.3)' : i % 3 === 1 ? 'rgba(139, 92, 246, 0.3)' : 'rgba(168, 85, 247, 0.3)',
+            }}
+          />
+        ))}
+
+        {/* Particles */}
+        {Array.from({ length: 50 }).map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            animate={{
+              y: [0, -100, 0],
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: Math.random() * 5,
+            }}
+            className="absolute rounded-full"
+            style={{
+              width: 2 + Math.random() * 4,
+              height: 2 + Math.random() * 4,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              background: i % 2 === 0 ? 'rgba(99, 102, 241, 0.8)' : 'rgba(168, 85, 247, 0.8)',
+            }}
+          />
+        ))}
+
+        {/* Grid lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-10">
+          <defs>
+            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(99, 102, 241, 0.3)" strokeWidth="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+
+        {/* Glowing center */}
+        <motion.div
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 blur-3xl"
+        />
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         {/* Profile Image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -36,7 +134,7 @@ const Hero = () => {
               transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
               className="absolute inset-0 -m-4 border border-dotted border-secondary/40 rounded-full"
             />
-            
+
             {/* Profile image */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -81,7 +179,7 @@ const Hero = () => {
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             <span className="text-sm text-gray-300">Available for opportunities</span>
           </motion.div>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
